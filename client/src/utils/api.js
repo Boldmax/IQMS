@@ -6,7 +6,7 @@ import axios from 'axios';
 // all /api/* calls go to the same origin (localhost:3000) and CRA proxies them.
 // In production the React build is served by Express itself, so /api is also same-origin.
 const api = axios.create({
-  baseURL: '/api',
+  baseURL:process.env.REACT_APP_API_URL || '/api',
   timeout: 15000,
   headers: { 'Content-Type': 'application/json' },
 });
