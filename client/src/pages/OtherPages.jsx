@@ -7,7 +7,7 @@ import { getNCRs, createNCR, closeNCR, getProjects, createProject,
          getWelders, createWelder, updateWelder,
          getBlasters, createBlaster, updateBlaster,
          getPainters, createPainter, updatePainter,
-         getEquipment, createEquipment, updateEquipment, calibrateEquipment,
+         getEquipment, createEquipment, calibrateEquipment,
          getAuditLog, getUsers, toggleUser, getInspectorWorkload, updateUserCapacity,
          aiNCRAssist, aiExtractWelderDoc } from '../utils/api';
 import { Badge, Tag, Button, Card, CardHeader, CardBody, Modal,

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import toast from 'react-hot-toast';
 import { getAttachments, uploadAttachment, deleteAttachment, downloadAttachment } from '../../utils/api';
 import { Button } from './UI';
@@ -26,15 +26,19 @@ export const AttachmentPanel = ({ entityType, entityId, canUpload = true, canDel
   const [progress, setProgress] = useState(0);
   const inputRef = useRef(null);
 
-  const load = () => {
-    setLoading(true);
-    getAttachments(entityType, entityId)
-      .then(res => setFiles(res.data.data || []))
-      .catch(() => toast.error('Failed to load attachments'))
-      .finally(() => setLoading(false));
-  };
+  const load = useCallback(() => {
+  setLoading(true);
+  getAttachments(entityType, entityId)
+    .then(res => setFiles(res.data.data || []))
+    .catch(() => toast.error('Failed to load attachments'))
+    .finally(() => setLoading(false));
+}, [entityType, entityId]);
 
-  useEffect(() => { if (entityId) load(); }, [entityType, entityId]);
+  useEffect(() => {
+  if (entityId) {
+    load();
+  }
+}, [entityId, load]);
 
   const handleFile = async (e) => {
     const file = e.target.files?.[0];
