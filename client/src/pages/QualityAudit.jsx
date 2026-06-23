@@ -58,7 +58,7 @@ export default function QualityAudit() {
   const [showModal, setShowModal] = useState(false);
   const [form, setForm] = useState(EMPTY_REPORT);
   const [submitting, setSubmitting] = useState(false);
-  const [filter, setFilter] = useState('All');
+  const [filter] = useState('All');
   const [selectedReport, setSelectedReport] = useState(null);
 
   const loadReports = useCallback(() => {
@@ -231,6 +231,7 @@ export default function QualityAudit() {
                     <Button variant="ghost" size="sm" onClick={() => setSelectedReport(report)}>
                       View
                     </Button>
+
                   </td>
                 </tr>
               ))}
